@@ -1,0 +1,33 @@
+$debug: 1px solid red;
+
+$box-shadow-standard: 0px 10px 20px rgba($color: #000000, $alpha: .10);
+
+$color-primary: #1DA1F2;
+$color-primary-hover: rgba($color-primary, .15);
+$color-black: #14171A;
+$color-gray-dark: #657786;
+$color-gray-light: #AAB8C2;
+$color-gray-light-extra: #E1E8ED;
+$color-white-soft: #f5f9fa;
+$color-white: #F5F8FA;
+$color-transparent: rgba(0,0,0,0);
+$color-border: $color-gray-light-extra;
+$circle: 50%;
+$half-circle: 30px;
+
+$font-family-primary: 'Segoe UI';
+
+$icon-size: 1.2rem;
+$icon-container-size: 34px;
+
+$padding-top-screen: .5rem;
+$padding-left-right-screen: .8rem;
+
+$size-side-navbar: 275px;
+$size-side-navbar-tablet: 100px;
+$size-standard: .5rem;
+
+$tranisition-fast: 200ms;
+$transition-standard: 400ms;
+$transition-slow: 600ms;
+

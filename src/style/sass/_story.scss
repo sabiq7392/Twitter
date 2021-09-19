@@ -1,0 +1,78 @@
+.container-story {
+    .story-item {
+        display: flex;
+        padding: $padding-left-right-screen;
+        column-gap: $size-standard;
+        border-bottom: 1px solid $color-gray-light-extra;
+        font-size: 15px;
+        width: 100%;
+        .image-user {
+            cursor: pointer;
+            img {
+                @include image-user();
+            }
+        }
+
+        .story-user {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .id-user {
+                b.nickname, span.username { cursor: pointer }
+                span, i, time { color: $color-gray-light }
+            }
+
+            .story-user-content {
+                margin-bottom: $size-standard;
+                display: flex;
+                flex-direction: column;
+                row-gap: .5rem;
+                .hashtag {
+                    cursor: pointer;
+                    color: $color-primary;
+                }
+
+                img {
+                    width: 100%;
+                    max-height: 250px;
+                    border-radius: 15px;
+                    object-fit: cover;
+                }
+            }
+
+            .container-btn-action {
+                display: flex;
+                justify-content: space-between;
+                button {
+                    @include center-display(flex);
+                    column-gap: $size-standard;
+                    color: $color-gray-dark!important;
+                    i {
+                        padding: .25rem .5rem;
+                        border-radius: $circle;
+                        font-size: $icon-size; 
+                    }
+
+                    &:nth-child(1) i:hover, &:nth-child(4) i:hover {
+                        color: $color-primary;
+                        background-color: $color-primary-hover;
+                    }
+
+                    &:nth-child(2) i:hover {
+                        $color-green: #2ed573;
+
+                        color: $color-green;
+                        background-color: rgba($color-green, .1);
+                    }
+
+                    &:nth-child(3) i:hover {
+                        $color-red: #ff6b81;
+
+                        color: $color-red;
+                        background-color: rgba($color-red, .3);
+                    }
+                }
+            }
+        }
+    }
+}

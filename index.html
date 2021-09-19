@@ -4,14 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/style/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="src/style/css/index.css">
+    <link rel="shortcut icon" href="src/img/twitter.svg">
     <title>Twitter</title>
 </head>
 <body>
-    
-    <div>
+    <div class="container">
+        <side-navbar class="side-navbar"></side-navbar>
+        <main>
+            <header>
+                <h2>Home</h2>
+                <button><i class="bi bi-stars"></i></button>
+            </header>
+            
+            <make-post></make-post>
 
+            <div class="border-bottom-big"></div>
+
+            <section class="container-story">
+                <story-item></story-item>
+            </section>
+        </main>
+        <div class="position-relative">
+            <aside>
+                <!-- <div class="position-sticky top-0 bg-white padding-rule"> -->
+                <div class="padding-rule">
+                    <input-search></input-search>
+                </div>
+                <div class="container-trends-for-you">
+                    <header>
+                        <h2>Trends For You</h2>
+                        <a href="">
+                            <i class="bi bi-gear"></i>
+                        </a>
+                    </header>
+                    <trends-for-you></trends-for-you>
+                    <div class="show-more">
+                        <a href="">Show more</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
     </div>
 
+    <script src="src/script/index.js" type="module"></script>
 </body>
 </html>

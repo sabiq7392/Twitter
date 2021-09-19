@@ -1,0 +1,90 @@
+@mixin image-user {
+    $img-size: 50px;
+    width: $img-size;
+    height: $img-size;
+    object-fit: cover;
+    object-position: top;
+    border-radius: $circle;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $color-border;
+    min-height: 100vh;
+    max-width: 600px;
+    width: 100%;
+    margin-left: $size-side-navbar;
+    @include media('tablet') {
+        margin-left: $size-side-navbar-tablet;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $padding-top-screen $padding-left-right-screen;
+        border-bottom: 1px solid $color-border!important;
+        button {
+            @include icon();
+            i {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .container-make-post {
+        display: flex;
+        padding: $padding-left-right-screen;
+        .container-user-profile {
+            margin-right: $size-standard;
+            img.user-profile {
+                @include image-user();
+            }
+        }
+
+        .make-post {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .container-textarea {
+                textarea {
+                    width: 100%;
+                    overflow: visible;
+                    padding: $size-standard;
+                    border: none;
+                    resize: none;
+                    &:focus {
+                        outline: 1px solid $color-transparent;
+                    }
+
+                    &::placeholder {
+                        color: $color-black;
+                        font-weight: 600;
+                        font-size: 16px;
+                    }
+                }
+            }
+            .container-btn-action {
+                display: flex;
+                justify-content: space-between;
+                button:not(.btn-post-tweet) {
+                    @include icon();
+                    transition: $tranisition-fast;
+                }
+
+                .btn-post-tweet {
+                    @include btn-tweet;
+                    font-size: .9rem;
+                    font-weight: bold;
+                    padding: $size-standard 1.5rem; 
+                }
+
+                img.gif {
+                    width: $icon-size;
+                    height: $icon-size;
+                }
+            }
+        }
+    }
+    @import '_story.scss';
+}

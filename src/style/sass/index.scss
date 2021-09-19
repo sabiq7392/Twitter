@@ -1,11 +1,20 @@
+@import './lib/variables';
+@import './lib//mixin';
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: $font-family-primary;
+    scrollbar-width: thin;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
 }
 
 ul {
@@ -15,3 +24,56 @@ ul {
 a {
     text-decoration: none;
 }
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+h2 {
+    font-size: 1.3rem;
+}
+
+.container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.border-bottom-big { border-bottom: 10px solid $color-border }
+
+.border-bottom { border-bottom: 1px solid $color-border }
+
+.bg-white { background-color: white }
+
+.d-grid { display: grid }
+
+.d-flex { display: flex }
+
+.d-block { display: block }
+
+.d-none { display: none!important }
+
+.gap-1 { column-gap: .5rem }
+
+.justify-content-space-between { justify-content: space-between; }
+
+.padding-rule { padding: $padding-top-screen 0 }
+
+.place-items-center { place-items: center }
+
+.position-sticky { position: sticky }
+
+.position-relative {
+    position: relative;
+}
+
+.top-0 { top: 0 }
+
+@import '_navbar.scss';
+@import '_main.scss';
+@import '_aside.scss';

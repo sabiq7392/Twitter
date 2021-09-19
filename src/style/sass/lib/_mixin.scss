@@ -1,0 +1,50 @@
+@import "_variables.scss";
+@import "_media-quaries.scss";
+
+@mixin center-display($display) {
+    display: $display;
+    place-items: center;
+}
+
+@mixin center-vertical($display) {
+    display: $display;
+    align-items: center;
+}
+
+@mixin center-horizontal($display) {
+    display: $display;
+    justify-content: center;
+}
+
+@mixin center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin btn-tweet {
+    @include center-display(grid);
+    color: $color-white;
+    background-color: $color-primary;
+    border-radius: $half-circle;
+    transition: background-color $transition-standard;
+    &:hover {
+        filter: brightness(90%);
+    }
+}
+
+@mixin icon {
+    @include center-display(grid);
+    color: $color-primary;
+    width: $icon-container-size;
+    height: $icon-container-size;
+    border-radius: $circle;
+    &:hover {
+        background-color: $color-primary-hover;
+    }
+
+    i {
+        font-size: $icon-size; 
+    }
+}
