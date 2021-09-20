@@ -1,4 +1,5 @@
-import storyItems from "../data/storyItems.js";
+import storyItems from '../data/storyItems.js';
+import { $, $all, $query } from '../lib/lib.js';
 
 class StoryItem extends HTMLElement {
     connectedCallback() {
@@ -25,8 +26,36 @@ class StoryItem extends HTMLElement {
                                     <time>${timeCreated}</time>
                                 </p>
                             </div>
-                            <div>
-                                <i class="bi bi-chevron-down"></i>
+                            <div class="dropdown-menu-more">
+                                <button class="dropdown-menu-more-button" title="More">
+                                    <i class="bi bi-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu-more-content d-none">
+                                    <a href="">
+                                        <i class="bi bi-person-plus"></i> 
+                                        <span>Follow ${user.username}</span>
+                                    </a>
+                                    <a href="">
+                                        <i class="bi bi-file-earmark-plus"></i>
+                                        <span>Add/remove ${user.username} from lists</span>
+                                    </a>
+                                    <a href="">
+                                        <i class="bi bi-volume-mute"></i>
+                                        <span>Mute ${user.username}</span>
+                                    </a>
+                                    <a href="">
+                                        <i class="bi bi-x-circle"></i>
+                                        <span>Block ${user.username}</span>
+                                    </a>
+                                    <a href="">
+                                        <i class="bi bi-chevron-expand rotate"></i>
+                                        <span>Embed Tweet</span>
+                                    </a>
+                                    <a href="">
+                                        <i class="bi bi-flag reverse"></i>
+                                        <span>Report Tweet</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="story-user-content">
@@ -58,7 +87,29 @@ class StoryItem extends HTMLElement {
                 </section>
             `;
         });
-        
+
+        this.#dropdownMenuMore();
+    }
+
+    #dropdownMenuMore() {
+        const dropdowns = $all('.dropdown-menu-more');
+
+        dropdowns.forEach((dropdown) => {
+            $query(dropdown).onClick(() => {
+                const button = dropdown.firstElementChild;
+                const content = dropdown.lastElementChild;
+                showHideDropdownContent(content)
+                changeBackgroundColorButton(button)
+            });
+        });
+
+        const showHideDropdownContent = (content) => {
+            $query(content).toggleClass(['d-none'])
+        }
+
+        const changeBackgroundColorButton = (button) => {
+            $query(button).toggleClass(['active'])
+        }
     }
 }
 

@@ -1,3 +1,5 @@
+import { $ } from '../lib/lib.js'
+
 class MakePost extends HTMLElement {
     connectedCallback() {
         this.#render();
@@ -27,6 +29,13 @@ class MakePost extends HTMLElement {
                 </div>
             </section>
         `;
+
+        this.#resetTextareaWhenPageReload();
+    }
+
+    #resetTextareaWhenPageReload() {
+        const textarea = $('#makePostTextarea');
+        textarea.value = ''
     }
 }
 

@@ -64,16 +64,16 @@ class InputSearch extends HTMLElement {
                 this.#contentSearched({ display: 'hide' })
             });
 
-        const resetButton = () => {
-            $query(document).onClick((event) => {
-                const clickedElement = event.target;
-                if (clickedElement !== self) {
-                    this.#resetInputSearch({ display: 'hide',  input: self  });
-                }
-            });
-        }
+        this.#resetButton({ reset: self });
+    }
 
-        resetButton();
+    #resetButton({ reset }) {
+        $query(document).onClick((event) => {
+            const clickedElement = event.target;
+            if (clickedElement !== reset) {
+                this.#resetInputSearch({ display: 'hide', input: reset });
+            }
+        });
     }
 
     #resetInputSearch({ display, input }) {
