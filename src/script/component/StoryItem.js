@@ -1,5 +1,5 @@
 import storyItems from '../data/storyItems.js';
-import { $, $all, $query } from '../lib/lib.js';
+import { $, $query } from '../lib/lib.js';
 
 class StoryItem extends HTMLElement {
     connectedCallback() {
@@ -92,10 +92,10 @@ class StoryItem extends HTMLElement {
     }
 
     #dropdownMenuMore() {
-        const dropdowns = $all('.dropdown-menu-more');
+        const dropdowns = $('.dropdown-menu-more');
 
         dropdowns.forEach((dropdown) => {
-            $query(dropdown).onClick(() => {
+            $([dropdown]).onClick(() => {
                 const button = dropdown.firstElementChild;
                 const content = dropdown.lastElementChild;
                 showHideDropdownContent(content)

@@ -1,12 +1,38 @@
 "use strict";
 
-class Dom {
-    $(element) { 
-        return document.querySelector(element);
-    }
+class Mame {
+    constructor() {
+        if (this.constructor.name === 'DOM') {
+            throw new TypeError(`${this.constructor.name} is abstract class!`);
+        }
 
-    $all(element) { 
-        return document.querySelectorAll(element);
+        // this._event = 
+    }
+}
+
+
+
+class Dom {
+    
+    $(element) { 
+        if (typeof element === 'object') {
+            if (element.length > 1) {
+                console.error({info: element, message: 'Cant init more than one element'});
+                return false;
+            }
+
+            const query = element[0];
+            return {
+                onClick(listener, options) {
+                    query.addEventListener('click', listener, options);
+                }
+            }
+        }
+
+        if (!(element.includes('#'))) {
+            return document.querySelectorAll(element);
+        }
+        return document.querySelector(element);   
     }
 
     $query(element) {
@@ -45,16 +71,6 @@ class Dom {
                 return this;
             },
 
-            // onHover(listener, options) {
-            //     query.addEventListener("mouseover", listener, options);
-            //     return this;
-            // },
-
-            // offHover(listener, options) {
-            //     query.addEventListener("mouseout", listener, options);
-            //     return this;
-            // },
-
             hover() {
                 return {
                     on(listener, options) {
@@ -68,16 +84,6 @@ class Dom {
                     }
                 }
             },  
-
-            // onFocus(listener, options) {
-            //     query.addEventListener("focus", listener, options);
-            //     return this;
-            // },
-
-            // onBlur(listener, options) {
-            //     query.addEventListener("blur", listener, options);
-            //     return this;
-            // },
 
             focus() {
                 return {
@@ -146,21 +152,4 @@ class Dom {
 }
 
 const dom = new Dom();
-
-const $ = (element) => { return dom.$(element) }
-
-const $all = (element) => { return dom.$all(element) }
-
-const $query = (element) => { return dom.$query(element) }
-
-const $window = () => { return dom.$window() }
-
-const $media = (screen) => { return dom.$media(screen) }
-    
-// const $countObjectSize = (obj) => {
-//     let size = 0;
-//     for (let key in obj) obj.hasOwnProperty(key) ? size++ : false;
-//     return size;
-// };
-
-export { dom, $, $query, $all, $window, $media };
+export const { $, $query, $window, $media } = dom;

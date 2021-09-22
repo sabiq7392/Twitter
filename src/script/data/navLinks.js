@@ -1,4 +1,4 @@
-const navMenus = [
+const navLinks = [
     {
         title: 'Home',
         icon: 'bi bi-house',
@@ -58,4 +58,4 @@ const navMenus = [
     }
 ];
 
-export default navMenus;
+export default navLinks;

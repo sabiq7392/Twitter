@@ -68,7 +68,7 @@ class InputSearch extends HTMLElement {
     }
 
     #resetButton({ reset }) {
-        $query(document).onClick((event) => {
+        $([document]).onClick((event) => {
             const clickedElement = event.target;
             if (clickedElement !== reset) {
                 this.#resetInputSearch({ display: 'hide', input: reset });

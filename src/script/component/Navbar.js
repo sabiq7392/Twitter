@@ -1,5 +1,4 @@
-import { $, $all, $query } from '../lib/lib.js';
-// import navMenus from '../data/navLinks.js';
+import { $, $query } from '../lib/lib.js';
 
 class Navbar extends HTMLElement {
     connectedCallback() {
@@ -26,7 +25,7 @@ class Navbar extends HTMLElement {
     }
 
     #hover() {
-        const menus = $all('nav ul .nav-link a');
+        const menus = $('nav ul .nav-link a');
 
         for (const menu of menus) {
             const icon = menu.firstElementChild;
