@@ -41,7 +41,6 @@ class Dom extends Mame {
                         query.addEventListener("mouseover", listener, options);
                         return this;
                     },
-
                     off(listener, options){
                         query.addEventListener("mouseout", listener, options);
                         return this;
@@ -54,7 +53,6 @@ class Dom extends Mame {
                         query.addEventListener("focus", listener, options);
                         return this;
                     },
-
                     off(listener, options) {
                         query.addEventListener("blur", listener, options);
                         return this;
@@ -67,7 +65,6 @@ class Dom extends Mame {
                         query.addEventListener('animationstart', listener, options);
                         return this;
                     },
-    
                     end(listener, options) {
                         query.addEventListener('animationend', listener, options);
                         return this;
