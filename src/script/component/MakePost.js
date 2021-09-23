@@ -1,4 +1,4 @@
-import { $ } from '../lib/lib.js'
+import { $ } from '../lib/Lib.js'
 
 class MakePost extends HTMLElement {
     connectedCallback() {

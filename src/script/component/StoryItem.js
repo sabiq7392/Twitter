@@ -1,5 +1,5 @@
 import storyItems from '../data/storyItems.js';
-import { $, $query } from '../lib/lib.js';
+import { $ } from '../lib/Lib.js';
 
 class StoryItem extends HTMLElement {
     connectedCallback() {
@@ -104,11 +104,11 @@ class StoryItem extends HTMLElement {
         });
 
         const showHideDropdownContent = (content) => {
-            $query(content).toggleClass(['d-none'])
+            $([content]).toggleClass(['d-none'])
         }
 
         const changeBackgroundColorButton = (button) => {
-            $query(button).toggleClass(['active'])
+            $([button]).toggleClass(['active'])
         }
     }
 }

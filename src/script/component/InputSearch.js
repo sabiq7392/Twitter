@@ -1,4 +1,4 @@
-import { $, $query } from '../lib/lib.js';
+import { $ } from '../lib/Lib.js';
 
 class InputSearch extends HTMLElement {
     connectedCallback() {
@@ -40,7 +40,7 @@ class InputSearch extends HTMLElement {
         }
         const { self, icon, parent, color, border, background } = input;
 
-        $query(self).focus()
+        $([self]).focus()
             .on(() => { 
                 parent.style.background = background.changed;
                 parent.style.border = border.changed;
@@ -48,7 +48,7 @@ class InputSearch extends HTMLElement {
                 
                 this.#contentSearched({ display: 'show' });
 
-                $query(self).onKeyUp(() => {
+                $([self]).onKeyUp(() => {
                     this.#resetInputSearch({ display: 'show', input: self, });
                 });
 
@@ -80,18 +80,18 @@ class InputSearch extends HTMLElement {
         const buttonResetSearch = $('#buttonResetSearch');
 
         if (display === 'show') {
-            $query(buttonResetSearch)
-            .addClass(['d-block'])
-            .removeClass(['d-none'])
-            .onClick(() => {
-                input.value = '';
-                $query(buttonResetSearch)
-                    .addClass(['d-none'])
-                    .removeClass(['d-block'])
-            });
+            $([buttonResetSearch])
+                .addClass(['d-block'])
+                .removeClass(['d-none'])
+                .onClick(() => {
+                    input.value = '';
+                    $([buttonResetSearch])
+                        .addClass(['d-none'])
+                        .removeClass(['d-block'])
+                });
 
         } else if (display === 'hide') {
-            $query(buttonResetSearch)
+            $([buttonResetSearch])
                 .addClass(['d-none'])
                 .removeClass(['d-block']);
         }
@@ -101,12 +101,12 @@ class InputSearch extends HTMLElement {
         const contentSearched = $('#contentSearched');
 
         if (display === 'show') {
-            $query(contentSearched)
+            $([contentSearched])
                 .addClass(['d-grid'])
                 .removeClass(['d-none'])
 
         } else if (display === 'hide') {
-            $query(contentSearched)
+            $([contentSearched])
                 .addClass(['d-none'])
                 .removeClass(['d-grid'])
         }

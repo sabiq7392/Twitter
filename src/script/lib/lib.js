@@ -1,48 +1,13 @@
+import Mame from './_Absctract.js';
 "use strict";
-
-class Mame {
-    constructor() {
-        if (this.constructor.name === 'DOM') {
-            throw new TypeError(`${this.constructor.name} is abstract class!`);
-        }
-
-        // this._event = 
-    }
-}
-
-
-
-class Dom {
-    
+class Dom extends Mame {
     $(element) { 
-        if (typeof element === 'object') {
-            if (element.length > 1) {
-                console.error({info: element, message: 'Cant init more than one element'});
-                return false;
-            }
-
-            const query = element[0];
-            return {
-                onClick(listener, options) {
-                    query.addEventListener('click', listener, options);
-                }
-            }
-        }
-
-        if (!(element.includes('#'))) {
-            return document.querySelectorAll(element);
-        }
-        return document.querySelector(element);   
-    }
-
-    $query(element) {
-        const query = element;
+        const query = element[0];
         return {
             show() {
                 query.style.display = " ";
                 return this;
             },
-
             hide() {
                 query.style.display = "none";
                 return this;
@@ -70,7 +35,6 @@ class Dom {
                 query.addEventListener("click", listener, options);
                 return this;
             },
-
             hover() {
                 return {
                     on(listener, options) {
@@ -84,7 +48,6 @@ class Dom {
                     }
                 }
             },  
-
             focus() {
                 return {
                     on(listener, options) {
@@ -98,17 +61,23 @@ class Dom {
                     }
                 }
             },
-
-            animationEnd(listener, options) {
-                query.addEventListener("animationend", listener, options);
-                return this;
+            animation() {
+                return {
+                    start(listener, options) {
+                        query.addEventListener('animationstart', listener, options);
+                        return this;
+                    },
+    
+                    end(listener, options) {
+                        query.addEventListener('animationend', listener, options);
+                        return this;
+                    }
+                }
             },
-
             onKeyUp(listener, options) {
                 query.addEventListener("keyup", listener, options);
                 return this;
             },
-
             onSubmit(listener, options) {
                 query.addEventListener("submit", listener, options);
                 return this;
@@ -152,4 +121,8 @@ class Dom {
 }
 
 const dom = new Dom();
-export const { $, $query, $window, $media } = dom;
+const mame = new Mame(dom)
+
+const $ = (element) => mame.$(element);
+
+export { $ };

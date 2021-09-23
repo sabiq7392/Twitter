@@ -1,4 +1,4 @@
-import { $, $query } from '../lib/lib.js';
+import { $ } from '../lib/Lib.js';
 
 class Navbar extends HTMLElement {
     connectedCallback() {
@@ -32,7 +32,7 @@ class Navbar extends HTMLElement {
             const iconStyleNormal = icon.className;
             const iconStyleChanged = iconStyleNormal + '-fill';
 
-            if ($query(menu).containClass(['active'])) {
+            if ($([menu]).containClass(['active'])) {
                 icon.className = iconStyleChanged;
             }
         }
