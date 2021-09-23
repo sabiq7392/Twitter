@@ -2,7 +2,7 @@ import { isObject } from './_Type.js';
 
 class Mame {
     constructor(element) {
-        if (this.constructor.name === 'DOM') {
+        if (this.constructor.name === 'Mame') {
             throw new TypeError(`${this.constructor.name} is abstract class!`);
         }
 
