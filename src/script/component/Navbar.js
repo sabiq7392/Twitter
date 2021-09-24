@@ -1,4 +1,4 @@
-import { $ } from '../lib/Lib.js';
+import { $ } from '../lib/Mame.js';
 
 class Navbar extends HTMLElement {
     connectedCallback() {

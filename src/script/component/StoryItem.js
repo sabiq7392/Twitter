@@ -1,5 +1,5 @@
 import storyItems from '../data/storyItems.js';
-import { $ } from '../lib/Lib.js';
+import { $ } from '../lib/Mame.js';
 
 class StoryItem extends HTMLElement {
     connectedCallback() {
@@ -110,6 +110,7 @@ class StoryItem extends HTMLElement {
         const changeBackgroundColorButton = (button) => {
             $([button]).toggleClass(['active'])
         }
+
     }
 }
 

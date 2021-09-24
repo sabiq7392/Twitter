@@ -1,4 +1,4 @@
-import { $ } from '../lib/Lib.js';
+import { $ } from '../lib/Mame.js';
 
 class InputSearch extends HTMLElement {
     connectedCallback() {
@@ -49,11 +49,11 @@ class InputSearch extends HTMLElement {
                 this.#contentSearched({ display: 'show' });
 
                 $([self]).onKeyUp(() => {
-                    this.#resetInputSearch({ display: 'show', input: self, });
+                    this.#resetButton({ display: 'show', input: self, });
                 });
 
                 if (self.value !== '') {
-                    this.#resetInputSearch({ display: 'show', input: self, });
+                    this.#resetButton({ display: 'show', input: self, });
                 }
             })
             .off(() => {
@@ -64,19 +64,19 @@ class InputSearch extends HTMLElement {
                 this.#contentSearched({ display: 'hide' })
             });
 
-        this.#resetButton({ reset: self });
+        this.#hideResetButtonWhenBlur({ reset: self });
     }
 
-    #resetButton({ reset }) {
+    #hideResetButtonWhenBlur({ reset }) {
         $([document]).onClick((event) => {
             const clickedElement = event.target;
             if (clickedElement !== reset) {
-                this.#resetInputSearch({ display: 'hide', input: reset });
+                this.#resetButton({ display: 'hide', input: reset });
             }
         });
     }
 
-    #resetInputSearch({ display, input }) {
+    #resetButton({ display, input }) {
         const buttonResetSearch = $('#buttonResetSearch');
 
         if (display === 'show') {

@@ -1,6 +1,7 @@
-import Mame from './_Absctract.js';
+import DomSuper from "./_DomSuper.js";
 "use strict";
-class Dom extends Mame {
+
+class Dom extends DomSuper {
     $(element) { 
         const query = element[0];
         return {
@@ -14,23 +15,23 @@ class Dom extends Mame {
             },
 
             // == For a element & multiple class ==
-            toggleClass(classlist) {
-                query.classList.toggle(...classlist);
-                return this;
-            },
             addClass(classlist) {
                 query.classList.add(...classlist);
-                return this;
-            },
-            removeClass(classlist) {
-                query.classList.remove(...classlist);
                 return this;
             },
             containClass(classlist) {
                 return query.classList.contains(...classlist);
             },
+            removeClass(classlist) {
+                query.classList.remove(...classlist);
+                return this;
+            },
+            toggleClass(classlist) {
+                query.classList.toggle(...classlist);
+                return this;
+            },
 
-            // == Listerner == 
+            // == Listener == 
             onClick(listener, options) {
                 query.addEventListener("click", listener, options);
                 return this;
@@ -117,9 +118,4 @@ class Dom extends Mame {
     }
 }
 
-const dom = new Dom();
-const mame = new Mame(dom)
-
-const $ = (element) => mame.$(element);
-
-export { $ };
+export default Dom;

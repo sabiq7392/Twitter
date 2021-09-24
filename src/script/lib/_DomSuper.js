@@ -1,11 +1,8 @@
 import { isObject } from './_Type.js';
+'use strict';
 
-class Mame {
+class DomSuper {
     constructor(element) {
-        if (this.constructor.name === 'Mame') {
-            throw new TypeError(`${this.constructor.name} is abstract class!`);
-        }
-
         this._element = element;
     }
 
@@ -26,10 +23,6 @@ class Mame {
 
         return this._element.$(element);
     }
-
-    $query(element) {
-        return this._element.$query(element);
-    }
 }
 
-export default Mame;
+export default DomSuper;
