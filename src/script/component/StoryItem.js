@@ -95,7 +95,7 @@ class StoryItem extends HTMLElement {
         const dropdowns = $('.dropdown-menu-more');
 
         dropdowns.forEach((dropdown) => {
-            $([dropdown]).onClick(() => {
+            $(dropdown).onClick(() => {
                 const button = dropdown.firstElementChild;
                 const content = dropdown.lastElementChild;
                 showHideDropdownContent(content)
@@ -104,11 +104,11 @@ class StoryItem extends HTMLElement {
         });
 
         const showHideDropdownContent = (content) => {
-            $([content]).toggleClass(['d-none'])
+            $(content).toggleClass(['d-none'])
         }
 
         const changeBackgroundColorButton = (button) => {
-            $([button]).toggleClass(['active'])
+            $(button).toggleClass(['active'])
         }
 
     }

@@ -1,16 +1,9 @@
-class Type {
-    isString(element) {
-        return typeof element === 'string';
-    }
-
-    isNumber(element) {
-        return typeof element === 'number';
-    }
-
-    isObject(element) {
-        return typeof element === 'object';
-    }
+function Type() {
+  return {
+    isString: (element) => typeof element === 'string',
+    isNumber: (element) => typeof element === 'number',
+    isObject: (element) => typeof element === 'object',
+  };
 }
 
-const type = new Type();
-export const { isString, isNumber, isObject } = type;
+export const { isString, isNumber, isObject } = Type();

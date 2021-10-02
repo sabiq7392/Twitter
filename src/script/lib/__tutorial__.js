@@ -1,38 +1,38 @@
 // !! Mame Make Your Code More Readble and Easy to Maintenance !!
+// !! Author Sabiq Muhammad Antebing Mame !! 
 
 // How To Install Mame in Your Project
 import { $ } from './Mame.js';
 'use strict';
 
-// How To Use It
+// HOW TO USE IT
 
 // =============== Use Basic ===============
-const resetButtons = $('.resetButton');
+const resetButtons = $('#resetButton');
 
 // =============== Use ClassList ===============
 // Always use array in $([]) and addClass([])
 
 // ==== Add Class ====
-$([resetButtons]).addClass(['bg-yellow'])
-$([resetButtons]).addClass(['bg-yellow', 'w-100', 'h-100'])
-
+$(resetButtons).addClass(['bg-yellow'])
+$(resetButtons).addClass(['bg-yellow', 'w-100', 'h-100'])
 
 // ==== Contain Class ====
-$([resetButtons]).containClass(['bg-yellow'])
-$([resetButtons]).containClass(['bg-yellow', 'w-100', 'h-100'])
+$(resetButtons).containClass(['bg-yellow'])
+$(resetButtons).containClass(['bg-yellow', 'w-100', 'h-100'])
 
 // ==== Remove Class ====
-$([resetButtons]).removeClass(['bg-yellow'])
-$([resetButtons]).removeClass(['bg-yellow', 'w-100', 'h-100'])
+$(resetButtons).removeClass(['bg-yellow'])
+$(resetButtons).removeClass(['bg-yellow', 'w-100', 'h-100'])
 
 // ==== Toggle Class ====
-$([resetButtons]).toggleClass(['bg-yellow'])
+$(resetButtons).toggleClass(['bg-yellow'])
 
 // For toggle is still experimentall
-$([resetButtons]).toggleClass(['bg-yellow', 'w-100', 'h-100'])
+$(resetButtons).toggleClass(['bg-yellow', 'w-100', 'h-100'])
 
 // ==== Advance Use ====
-$([resetButtons])
+$(resetButtons)
     .addClass(['bg-yellow'])
     .removeClass(['active', 'border'])
     .containClass(['bg-yellow'])
@@ -43,17 +43,23 @@ $([resetButtons])
 // Always use array, U CAN'T ADD MORE THAN ONE VALUE
 
 // ==== Click ====
-$(['.resetButton']).onClick(() => { 
-    // ..... Your Code
-
-});
-
-$([resetButtons]).onClick(() => { 
+$(resetButtons).onClick(() => { 
     // ..... Your Code
 });
 
+const button = $query('#button');
+
+$(button).onClick(clicked);
+
+// Not Recommended
+$($query('#button')).onClick(clicked);
+// ===
+
+function clicked() {
+  this.innerText = 'clicked';
+}
 // ==== Hover ====
-$([resetButtons]).hover()
+$(resetButtons).hover()
     .on(() => {
         // ..... Your Code
     })
@@ -62,7 +68,7 @@ $([resetButtons]).hover()
     });
 
 // ==== Focus ====
-$([resetButtons]).focus()
+$(resetButtons).focus()
     .on(() => {
         // ..... Your Code
     })
@@ -71,7 +77,7 @@ $([resetButtons]).focus()
     });
 
 // ==== Animation ====
-$([resetButtons]).animation()
+$(resetButtons).animation()
     .start(() => {
         // ..... Your Code
     })
@@ -80,32 +86,23 @@ $([resetButtons]).animation()
     });
 
 // ==== KeyUp ====
-$([resetButtons]).onKeyUp(() => { 
+$(resetButtons).onKeyUp(() => { 
     // ..... Your Code
-
 });
 
 // ==== onSubmit ====
-$([resetButtons]).onSubmit(() => { 
+$(resetButtons).onSubmit(() => { 
     // ..... Your Code
-
 });
 
-// You Still can use Normal JS Syntax, But Don't Mix it!
-$([resetButtons]).forEach(resetButton => {
-    console.log(resetButton);
+// ==== Media Screeen ====
+const button = $query('#button');
+
+$(window).media('max-width: 767px', () => {
+  $(button).onClick(() => {
+    console.log('hai phone');
+  });
 });
-
-// Bad Use, Is Still Experimental
-$([resetButtons]).forEach(resetButton => {
-    console.log(resetButton);
-}).onClick(() => {
-    // ..... Your Code
-})
-
-
-
-
 
 // NO LIB
 document.querySelector('resetButtons').classList.add('bg-yellow')
@@ -116,10 +113,10 @@ document.querySelector('resetButtons').classList.toggle('w-100')
 
 // WITH LIB
 $([resetButtons])
-    .addClass(['bg-yellow'])
-    .removeClass(['active', 'border'])
-    .containClass(['bg-yellow'])
-    .toggleClass(['w-100'])
+  .addClass(['bg-yellow'])
+  .removeClass(['active', 'border'])
+  .containClass(['bg-yellow'])
+  .toggleClass(['w-100'])
 
 
 // NO LIB

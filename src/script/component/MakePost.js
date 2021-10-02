@@ -1,4 +1,4 @@
-import { $ } from '../lib/Mame.js'
+import { $query } from '../lib/Mame.js'
 
 class MakePost extends HTMLElement {
     connectedCallback() {
@@ -34,7 +34,7 @@ class MakePost extends HTMLElement {
     }
 
     #resetTextareaWhenPageReload() {
-        const textarea = $('#makePostTextarea');
+        const textarea = $query('#makePostTextarea');
         textarea.value = ''
     }
 }

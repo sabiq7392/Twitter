@@ -1,4 +1,4 @@
-import { $ } from '../lib/Mame.js';
+import { $, $query } from '../lib/Mame.js';
 
 class Navbar extends HTMLElement {
     connectedCallback() {
@@ -25,14 +25,14 @@ class Navbar extends HTMLElement {
     }
 
     #hover() {
-        const menus = $('nav ul .nav-link a');
+        const menus = $query('nav ul .nav-link a');
 
         for (const menu of menus) {
             const icon = menu.firstElementChild;
             const iconStyleNormal = icon.className;
             const iconStyleChanged = iconStyleNormal + '-fill';
 
-            if ($([menu]).containClass(['active'])) {
+            if ($(menu).containClass(['active'])) {
                 icon.className = iconStyleChanged;
             }
         }

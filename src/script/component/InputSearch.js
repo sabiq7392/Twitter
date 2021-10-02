@@ -1,4 +1,4 @@
-import { $ } from '../lib/Mame.js';
+import { $, $query } from '../lib/Mame.js';
 
 class InputSearch extends HTMLElement {
     connectedCallback() {
@@ -22,9 +22,9 @@ class InputSearch extends HTMLElement {
 
     #focus() {
         const input = {
-            self: $('#inputSearch'),
-            icon: $('#iconSearch'),
-            parent: $('#inputSearch').parentElement,
+            self: $query('#inputSearch'),
+            icon: $query('#iconSearch'),
+            parent: $query('#inputSearch').parentElement,
             color: {
                 black: '#000',
                 primary: '#1DA1F2',
@@ -40,7 +40,7 @@ class InputSearch extends HTMLElement {
         }
         const { self, icon, parent, color, border, background } = input;
 
-        $([self]).focus()
+        $(self).focus()
             .on(() => { 
                 parent.style.background = background.changed;
                 parent.style.border = border.changed;
@@ -48,11 +48,11 @@ class InputSearch extends HTMLElement {
                 
                 this.#contentSearched({ display: 'show' });
 
-                $([self]).onKeyUp(() => {
+                $(this).onKeyUp(() => {
                     this.#resetButton({ display: 'show', input: self, });
                 });
 
-                if (self.value !== '') {
+                if (this.value !== '') {
                     this.#resetButton({ display: 'show', input: self, });
                 }
             })
@@ -68,7 +68,7 @@ class InputSearch extends HTMLElement {
     }
 
     #hideResetButtonWhenBlur({ reset }) {
-        $([document]).onClick((event) => {
+        $(document).onClick((event) => {
             const clickedElement = event.target;
             if (clickedElement !== reset) {
                 this.#resetButton({ display: 'hide', input: reset });
@@ -80,18 +80,18 @@ class InputSearch extends HTMLElement {
         const buttonResetSearch = $('#buttonResetSearch');
 
         if (display === 'show') {
-            $([buttonResetSearch])
+            $(buttonResetSearch)
                 .addClass(['d-block'])
                 .removeClass(['d-none'])
                 .onClick(() => {
                     input.value = '';
-                    $([buttonResetSearch])
+                    $(buttonResetSearch)
                         .addClass(['d-none'])
                         .removeClass(['d-block'])
                 });
 
         } else if (display === 'hide') {
-            $([buttonResetSearch])
+            $(buttonResetSearch)
                 .addClass(['d-none'])
                 .removeClass(['d-block']);
         }
@@ -101,12 +101,12 @@ class InputSearch extends HTMLElement {
         const contentSearched = $('#contentSearched');
 
         if (display === 'show') {
-            $([contentSearched])
+            $(contentSearched)
                 .addClass(['d-grid'])
                 .removeClass(['d-none'])
 
         } else if (display === 'hide') {
-            $([contentSearched])
+            $(contentSearched)
                 .addClass(['d-none'])
                 .removeClass(['d-grid'])
         }
